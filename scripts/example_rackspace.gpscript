@@ -1,0 +1,13 @@
+// Les zones s'affichent toutes seules d'après les blocs MIDI In (avec handle).
+// Ce script n'est utile que pour ajuster.
+
+On Activate
+   // Forcer une couleur pour un bloc précis (handle "Basse") :
+   KK_SetZoneColor("Basse", KK_Color(11, 3))   // bleu clair
+
+   // Ou passer en mode manuel :
+   // KK_SetAutoZones(false)
+   // KK_Clear()
+   // KK_SetRange(21, 47, KK_Color(11, 2))
+   // KK_SetRange(48, 108, KK_Color(7, 1))
+End
