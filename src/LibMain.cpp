@@ -1,4 +1,5 @@
 #include "LibMain.h"
+#include "Palette.h"
 
 #include <algorithm>
 #include <cctype>
@@ -44,6 +45,39 @@ void KK_Color(GPRuntimeEngine *vm)
     const int shade = std::clamp(GP_VM_PopInteger(vm), 0, 3);
     const int hue = std::clamp(GP_VM_PopInteger(vm), 0, 17);
     GP_VM_PushInteger(vm, hue == 0 ? 0 : hue * 4 + shade);
+}
+
+std::string popString(GPRuntimeEngine *vm)
+{
+    const int len = GP_VM_TopStringLength(vm);
+    std::string s(static_cast<size_t>(len) + 1, '\0');
+    GP_VM_PopString(vm, s.data(), len + 1);
+    s.resize(static_cast<size_t>(len));
+    return s;
+}
+
+void KK_ColorByName(GPRuntimeEngine *vm)
+{
+    // « bleu », « bleu clair », « red dark », « vert 1 »... ; 0 (eteint) si le nom est inconnu
+    const int c = palette::findColor(popString(vm));
+    GP_VM_PushInteger(vm, c < 0 ? 0 : c);
+}
+
+void KK_SetKeyByName(GPRuntimeEngine *vm)
+{
+    const std::string name = popString(vm);
+    const int note = GP_VM_PopInteger(vm);
+    const int c = palette::findColor(name);
+    gLib->device.setNote(note, toColor(c < 0 ? 0 : c));
+}
+
+void KK_SetRangeByName(GPRuntimeEngine *vm)
+{
+    const std::string name = popString(vm);
+    const int high = GP_VM_PopInteger(vm);
+    const int low = GP_VM_PopInteger(vm);
+    const int c = palette::findColor(name);
+    gLib->device.setRange(low, high, toColor(c < 0 ? 0 : c));
 }
 
 void KK_IsConnected(GPRuntimeEngine *vm)
@@ -94,6 +128,13 @@ ExternalAPI_GPScriptFunctionDefinition kFunctions[] = {
     {"KK_Clear", "", "", "Eteint tout le light guide", KK_Clear},
     {"KK_Color", "hue : integer, shade : integer", "Returns integer",
      "Construit un index de palette : hue 1..16 (17 = blanc), shade 0..3", KK_Color},
+    {"KK_ColorByName", "name : string", "Returns integer",
+     "Couleur par son nom : \"bleu\", \"bleu clair\", \"rouge sombre\", \"green light\"... (voir la charte du README)",
+     KK_ColorByName},
+    {"KK_SetKeyByName", "note : integer, colorName : string", "", "Allume une touche avec une couleur nommee",
+     KK_SetKeyByName},
+    {"KK_SetRangeByName", "lowNote : integer, highNote : integer, colorName : string", "",
+     "Allume une plage avec une couleur nommee", KK_SetRangeByName},
     {"KK_IsConnected", "", "Returns boolean", "Vrai si le clavier est detecte", KK_IsConnected},
     {"KK_SetAutoClear", "enabled : boolean", "",
      "Eteint automatiquement le light guide a chaque changement de rackspace", KK_SetAutoClear},
@@ -193,8 +234,8 @@ bool has(const std::string &s, const char *w)
     return s.find(w) != std::string::npos;
 }
 
-// Teintes attribuees automatiquement, dans l'ordre des blocs : bleu, vert, orange, violet, jaune, rouge, cyan, rose
-const int kAutoHues[] = {11, 7, 2, 13, 5, 1, 9, 16};
+// Teintes attribuees automatiquement, dans l'ordre des blocs (16 teintes, les plus distinctes d'abord)
+const int kAutoHues[] = {11, 7, 2, 13, 5, 1, 9, 16, 4, 8, 12, 15, 6, 10, 3, 14};
 } // namespace
 
 std::vector<Zone> LibMain::scanZones(bool logDetails)
@@ -265,13 +306,13 @@ std::vector<Zone> LibMain::scanZones(bool logDetails)
             continue;
         Zone z = c.zone;
         auto ov = std::find_if(colorOverrides.begin(), colorOverrides.end(), [&](auto &p) { return p.first == z.handle; });
-        const int namedHue = zones::hueFromText(z.caption);
+        const int namedColor = zones::colorFromText(z.caption);
         if (ov != colorOverrides.end())
             z.color = ov->second;
-        else if (namedHue > 0)
-            z.color = zones::paletteColor(namedHue, zoneShade);
+        else if (namedColor > 0)
+            z.color = static_cast<uint8_t>(namedColor);
         else
-            z.color = zones::paletteColor(kAutoHues[autoIndex++ % 8], zoneShade);
+            z.color = zones::paletteColor(kAutoHues[autoIndex++ % 16], zoneShade);
         out.push_back(z);
     }
     return out;

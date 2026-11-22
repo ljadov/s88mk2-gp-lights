@@ -55,11 +55,11 @@ la plage de notes acceptée par chacun (réglages Min Note / Max Note du bloc).
 1. **Donne un handle à chaque bloc MIDI In** : dans la vue câblage, clic droit sur
    le bloc, puis définis son handle. Gig Performer ne montre aux extensions que les
    blocs qui ont un handle. Sans handle, le bloc est ignoré.
-2. Les couleurs sont attribuées dans l'ordre : bleu, vert, orange, violet, jaune,
-   rouge, cyan, rose.
-3. Pour choisir une couleur, mets son nom dans le nom du bloc : « Basse bleu »,
-   « Pad violet », « Lead rouge ». Les noms reconnus : rouge, orange, jaune, vert,
-   cyan, turquoise, bleu, violet, magenta, rose, blanc (ou leur équivalent anglais).
+2. Sans indication, chaque bloc reçoit une teinte différente, dans cet ordre :
+   bleu, vert, orange, violet, jaune, rouge, cyan, fuchsia, puis les 8 autres teintes.
+3. Pour choisir la couleur, mets son nom dans le nom du bloc, avec la nuance si tu veux :
+   « Basse bleu », « Pad violet clair », « Lead rouge sombre », « Strings mint light ».
+   Tous les noms sont dans la [charte de couleurs](#4-charte-de-couleurs).
 4. Les touches couvertes par plusieurs blocs (layers) s'allument en **blanc**.
 5. S'il y a des blocs MIDI In du Komplete Kontrol ou en OMNI, les blocs des autres
    contrôleurs sont ignorés.
@@ -94,7 +94,50 @@ quel plugin. Les couleurs de l'éditeur sont une approximation de celles du clav
 
 ---
 
-## 4. Cohabiter avec le plugin Komplete Kontrol
+## 4. Charte de couleurs
+
+Le clavier offre **17 teintes** (16 couleurs et le blanc) en **4 nuances**, soit 68 couleurs.
+Chaque couleur a un nom, utilisable partout : dans le nom d'un bloc MIDI In, en GPScript
+et dans Kontrol Lights Map (le nom s'affiche quand la souris passe sur une couleur).
+
+![Charte de couleurs](docs/palette.svg)
+
+**Comment écrire un nom :** la teinte, puis éventuellement la nuance.
+`bleu` (nuance vive par défaut), `bleu clair`, `bleu moyen`, `bleu sombre`.
+En anglais : `blue`, `blue light`, `blue medium`, `blue dark`.
+On peut aussi écrire la nuance en chiffre : `bleu 0` (sombre) à `bleu 3` (clair).
+Majuscules et accents sont ignorés : `Doré`, `dore` et `DORE` sont équivalents.
+
+| Teinte | Français | English | Clair | Vif | Moyen | Sombre |
+|---|---|---|---|---|---|---|
+| 1 | rouge | red | 7 | 6 | 5 | 4 |
+| 2 | orange | orange | 11 | 10 | 9 | 8 |
+| 3 | ambre | amber | 15 | 14 | 13 | 12 |
+| 4 | doré | gold | 19 | 18 | 17 | 16 |
+| 5 | jaune | yellow | 23 | 22 | 21 | 20 |
+| 6 | lime | lime | 27 | 26 | 25 | 24 |
+| 7 | vert | green | 31 | 30 | 29 | 28 |
+| 8 | menthe | mint | 35 | 34 | 33 | 32 |
+| 9 | cyan | cyan | 39 | 38 | 37 | 36 |
+| 10 | turquoise | turquoise | 43 | 42 | 41 | 40 |
+| 11 | bleu | blue | 47 | 46 | 45 | 44 |
+| 12 | prune | plum | 51 | 50 | 49 | 48 |
+| 13 | violet | violet | 55 | 54 | 53 | 52 |
+| 14 | pourpre | purple | 59 | 58 | 57 | 56 |
+| 15 | magenta | magenta | 63 | 62 | 61 | 60 |
+| 16 | fuchsia | fuchsia | 67 | 66 | 65 | 64 |
+| 17 | blanc | white | 71 | 70 | 69 | 68 |
+
+Les nombres sont les numéros de couleur envoyés au clavier (teinte × 4 + nuance),
+utilisables directement avec `KK_SetKey` et `KK_SetRange`. 0 éteint la touche.
+Mots acceptés en plus : `rose` / `pink` (fuchsia), `mauve` (violet), `indigo` (prune),
+`aqua` (cyan), `marine` (bleu), `foncé` / `deep` (sombre), `pâle` / `pastel` (clair).
+
+Les couleurs de l'image sont une approximation : le rendu réel dépend des LED du clavier.
+
+---
+
+## 5. Cohabiter avec le plugin Komplete Kontrol
 
 Le plugin Komplete Kontrol (via NI Hardware Integration Agent) écrit lui aussi sur
 le light guide. L'extension renvoie ses couleurs toutes les 250 ms et se reconnecte
@@ -115,7 +158,7 @@ rackspace suivant.
 
 ---
 
-## 5. Diagnostic et dépannage
+## 6. Diagnostic et dépannage
 
 Menu **Extensions > Kontrol Lights : diagnostic des blocs MIDI In**, puis ouvre le
 **Script Logger** (menu Window de Gig Performer) pour lire le résultat. Il indique :
@@ -129,7 +172,7 @@ Menu **Extensions > Kontrol Lights : diagnostic des blocs MIDI In**, puis ouvre 
 | « L'extension est trop vieille » | Utilise la dernière `KontrolLights.dll` (SDK v62, Gig Performer 5) |
 | « clavier MK2 non trouvé » | Clavier branché et allumé ; lis la liste des interfaces dans le diagnostic |
 | « 0 zone(s) affichee(s) » | Les blocs MIDI In ont-ils un handle ? |
-| Les lumières s'effacent dans certains rackspaces | Plugin Komplete Kontrol présent : voir la section 4 |
+| Les lumières s'effacent dans certains rackspaces | Plugin Komplete Kontrol présent : voir la section 5 |
 | Les couleurs du plugin ne reviennent pas au changement de rackspace | Le bloc Kontrol Lights Map a-t-il un handle ? |
 
 Test sans Gig Performer : installe Python, puis `pip install hidapi` et
@@ -138,20 +181,23 @@ fait un balayage arc-en-ciel.
 
 ---
 
-## 6. Fonctions GPScript
+## 7. Fonctions GPScript
 
 Utilisables dans les scripts de rackspace, de chanson, de gig et les scriptlets.
 
 | Fonction | Rôle |
 |---|---|
+| `KK_SetKeyByName(note, name)` | allume une touche avec une couleur nommée : `KK_SetKeyByName(60, "bleu clair")` |
+| `KK_SetRangeByName(low, high, name)` | allume une plage avec une couleur nommée |
+| `KK_ColorByName(name)` | renvoie le numéro d'une couleur nommée (0 si le nom est inconnu) |
 | `KK_SetKey(note, color)` | allume une touche (note MIDI ; 21 = A0, la plus grave du S88) |
 | `KK_SetRange(low, high, color)` | allume une plage, bornes incluses |
 | `KK_Clear()` | éteint tout |
-| `KK_Color(hue, shade)` | renvoie une couleur : hue 1 à 16 (1 rouge, 2 orange, 5 jaune, 7 vert, 9 cyan, 11 bleu, 13 violet, 16 rose), 17 blanc ; shade 0 (sombre) à 3 (clair) |
+| `KK_Color(hue, shade)` | renvoie une couleur par numéros : teinte 1 à 17, nuance 0 (sombre) à 3 (clair) |
 | `KK_IsConnected()` | vrai si le clavier est détecté |
 | `KK_SetAutoZones(bool)` | active ou désactive les zones automatiques (actives par défaut) |
 | `KK_RefreshZones()` | relit les blocs MIDI In et réaffiche |
-| `KK_SetZoneColor(handle, color)` | force la couleur de la zone d'un bloc MIDI In dans ce rackspace |
+| `KK_SetZoneColor(handle, color)` | force la couleur de la zone d'un bloc MIDI In dans ce rackspace : `KK_SetZoneColor("Basse", KK_ColorByName("bleu clair"))` |
 | `KK_SetYield(bool)` | `true` : laisse le light guide au plugin Komplete Kontrol dans ce rackspace |
 | `KK_SetAutoClear(bool)` | éteint tout à chaque rackspace (quand les zones automatiques sont désactivées) |
 
@@ -159,7 +205,7 @@ Exemple : `scripts/example_rackspace.gpscript`.
 
 ---
 
-## 7. Compiler soi-même
+## 8. Compiler soi-même
 
 **Extension** (dossier racine) :
 ```
@@ -186,7 +232,8 @@ binaires de la release ont été produits.
 | `plugin/` | Plugin VST3 Kontrol Lights Map (JUCE) |
 | `shared/` | Format de la mémoire partagée entre l'extension et le plugin |
 | `scripts/` | Exemple de script GPScript |
-| `tools/` | Test Python du clavier, tests unitaires des zones |
+| `tools/` | Test Python du clavier, tests unitaires, génération de `docs/palette.svg` |
+| `docs/` | Image de la charte de couleurs |
 
 ## Limites connues
 - Le protocole USB du light guide n'est pas documenté par Native Instruments ; il

@@ -13,6 +13,8 @@ class MapEditor : public juce::AudioProcessorEditor, private juce::Timer
     void resized() override;
     void mouseDown(const juce::MouseEvent &) override;
     void mouseDrag(const juce::MouseEvent &) override;
+    void mouseMove(const juce::MouseEvent &) override;
+    void mouseExit(const juce::MouseEvent &) override;
 
     static juce::Colour displayColour(int paletteIndex);
 
@@ -34,6 +36,7 @@ class MapEditor : public juce::AudioProcessorEditor, private juce::Timer
     MapProcessor &proc;
     std::set<int> selection;
     int anchor = -1;
+    juce::String hoverText; // nom de la couleur ou de la touche sous la souris
     juce::ToggleButton replaceToggle;
     juce::TextButton transparentButton, offButton, clearButton, allButton;
 };

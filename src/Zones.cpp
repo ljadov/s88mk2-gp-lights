@@ -1,29 +1,9 @@
 #include "Zones.h"
+#include "Palette.h"
 
 #include <algorithm>
 #include <cctype>
 
-namespace
-{
-std::string lower(std::string s)
-{
-    std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
-    return s;
-}
-
-struct NamedHue
-{
-    const char *word;
-    int hue;
-};
-
-// Ordre de recherche : les mots les plus longs d'abord (« violet » avant « vio »…).
-const NamedHue kNamedHues[] = {
-    {"turquoise", 10}, {"magenta", 15}, {"orange", 2},  {"yellow", 5}, {"violet", 13}, {"purple", 14},
-    {"jaune", 5},      {"green", 7},    {"rouge", 1},   {"bleu", 11},  {"blue", 11},   {"vert", 7},
-    {"cyan", 9},       {"rose", 16},    {"pink", 16},   {"blanc", 17}, {"white", 17},  {"red", 1},
-};
-} // namespace
 
 namespace zones
 {
@@ -34,13 +14,9 @@ uint8_t paletteColor(int hue, int shade)
     return static_cast<uint8_t>(std::clamp(hue, 1, 17) * 4 + std::clamp(shade, 0, 3));
 }
 
-int hueFromText(const std::string &text)
+int colorFromText(const std::string &text)
 {
-    const std::string t = lower(text);
-    for (const auto &n : kNamedHues)
-        if (t.find(n.word) != std::string::npos)
-            return n.hue;
-    return -1;
+    return palette::findColor(text);
 }
 
 int parseNote(const std::string &raw)

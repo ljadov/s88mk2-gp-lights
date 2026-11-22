@@ -1,4 +1,5 @@
 #include "PluginEditor.h"
+#include "Palette.h"
 
 #if JUCE_WINDOWS
 #include <windows.h>
@@ -46,11 +47,8 @@ juce::Colour MapEditor::displayColour(int idx)
     if (idx < 4)
         return juce::Colours::transparentBlack;
     const int hue = idx / 4, shade = idx % 4;
-    static const juce::uint32 base[] = {0,          0xffff2a2a, 0xffff7a1a, 0xffffa040, 0xffffc030, 0xffffee22,
-                                        0xffa8f020, 0xff30e040, 0xff30f0a0, 0xff20e8e8, 0xff20c0f0, 0xff2a60ff,
-                                        0xff8050ff, 0xffa040ff, 0xffd030ff, 0xffff30d0, 0xffff4090, 0xffffffff};
     const float bright[] = {0.35f, 0.55f, 0.8f, 1.0f};
-    return juce::Colour(base[juce::jlimit(1, 17, hue)]).withMultipliedBrightness(bright[shade]);
+    return juce::Colour(0xff000000 | palette::kHues[juce::jlimit(1, 17, hue) - 1].rgb).withMultipliedBrightness(bright[shade]);
 }
 
 MapEditor::MapEditor(MapProcessor &p) : AudioProcessorEditor(p), proc(p)
@@ -215,6 +213,31 @@ void MapEditor::mouseDrag(const juce::MouseEvent &e)
     }
 }
 
+void MapEditor::mouseMove(const juce::MouseEvent &e)
+{
+    juce::String t;
+    if (const int sw = swatchAt(e.position); sw >= 0)
+        t = u8("Couleur : ") + juce::String::fromUTF8(palette::labelFr(sw).c_str()) + u8("  (n° ") + juce::String(sw) + ")";
+    else if (const int n = noteAt(e.position); n >= 0)
+    {
+        const int c = proc.getNoteColor(n);
+        t = noteName(n) + " : " + (c == 0 ? juce::String("transparent") : c == 1 ? u8("éteint") : juce::String::fromUTF8(palette::labelFr(c).c_str()));
+        if (c == 0 && !proc.getReplace() && zones[n] >= 4)
+            t += u8(" (zone MIDI In : ") + juce::String::fromUTF8(palette::labelFr(zones[n]).c_str()) + ")";
+    }
+    if (t != hoverText)
+    {
+        hoverText = t;
+        repaint();
+    }
+}
+
+void MapEditor::mouseExit(const juce::MouseEvent &)
+{
+    hoverText.clear();
+    repaint();
+}
+
 juce::String MapEditor::selectionText() const
 {
     if (selection.empty())
@@ -286,8 +309,10 @@ void MapEditor::paint(juce::Graphics &g)
 
     g.setColour(kQuiet);
     g.setFont(13.0f);
-    g.drawText(u8("Couleur à appliquer à la sélection (du plus clair au plus sombre) :"), 16, 236, 600, 20,
+    g.drawText(u8("Couleur à appliquer (lignes : clair, vif, moyen, sombre) :"), 16, 236, 380, 20,
                juce::Justification::left);
+    g.setColour(kText);
+    g.drawText(hoverText, 400, 236, kW - 416, 20, juce::Justification::left);
     for (int h = 1; h <= 17; ++h)
         for (int s = 0; s < 4; ++s)
         {

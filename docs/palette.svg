@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="836" viewBox="0 0 512 836" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<rect width="512" height="836" fill="#1e1f24"/>
+<text x="16" y="28" font-size="16" font-weight="600" fill="#e8e8ea">Charte de couleurs Kontrol Lights (S88 MK2)</text>
+<text x="166.0" y="54" font-size="12" text-anchor="middle" fill="#9a9ca3">clair / light</text>
+<text x="258.0" y="54" font-size="12" text-anchor="middle" fill="#9a9ca3">vif / bright</text>
+<text x="350.0" y="54" font-size="12" text-anchor="middle" fill="#9a9ca3">moyen / medium</text>
+<text x="442.0" y="54" font-size="12" text-anchor="middle" fill="#9a9ca3">sombre / dark</text>
+<text x="16" y="84" font-size="13" font-weight="600" fill="#e8e8ea">rouge</text>
+<text x="16" y="100" font-size="11" fill="#9a9ca3">red</text>
+<rect x="124" y="68" width="84" height="36" rx="6" fill="#ff2a2a"/>
+<text x="166.0" y="91.0" font-size="13" text-anchor="middle" fill="#f0f0f0">7</text>
+<rect x="216" y="68" width="84" height="36" rx="6" fill="#cc2121"/>
+<text x="258.0" y="91.0" font-size="13" text-anchor="middle" fill="#f0f0f0">6</text>
+<rect x="308" y="68" width="84" height="36" rx="6" fill="#8c1717"/>
+<text x="350.0" y="91.0" font-size="13" text-anchor="middle" fill="#f0f0f0">5</text>
+<rect x="400" y="68" width="84" height="36" rx="6" fill="#590e0e"/>
+<text x="442.0" y="91.0" font-size="13" text-anchor="middle" fill="#f0f0f0">4</text>
+<text x="16" y="128" font-size="13" font-weight="600" fill="#e8e8ea">orange</text>
+<text x="16" y="144" font-size="11" fill="#9a9ca3">orange</text>
+<rect x="124" y="112" width="84" height="36" rx="6" fill="#ff7a1a"/>
+<text x="166.0" y="135.0" font-size="13" text-anchor="middle" fill="#111">11</text>
+<rect x="216" y="112" width="84" height="36" rx="6" fill="#cc6114"/>
+<text x="258.0" y="135.0" font-size="13" text-anchor="middle" fill="#f0f0f0">10</text>
+<rect x="308" y="112" width="84" height="36" rx="6" fill="#8c430e"/>
+<text x="350.0" y="135.0" font-size="13" text-anchor="middle" fill="#f0f0f0">9</text>
+<rect x="400" y="112" width="84" height="36" rx="6" fill="#592a09"/>
+<text x="442.0" y="135.0" font-size="13" text-anchor="middle" fill="#f0f0f0">8</text>
+<text x="16" y="172" font-size="13" font-weight="600" fill="#e8e8ea">ambre</text>
+<text x="16" y="188" font-size="11" fill="#9a9ca3">amber</text>
+<rect x="124" y="156" width="84" height="36" rx="6" fill="#ffa040"/>
+<text x="166.0" y="179.0" font-size="13" text-anchor="middle" fill="#111">15</text>
+<rect x="216" y="156" width="84" height="36" rx="6" fill="#cc8033"/>
+<text x="258.0" y="179.0" font-size="13" text-anchor="middle" fill="#111">14</text>
+<rect x="308" y="156" width="84" height="36" rx="6" fill="#8c5823"/>
+<text x="350.0" y="179.0" font-size="13" text-anchor="middle" fill="#f0f0f0">13</text>
+<rect x="400" y="156" width="84" height="36" rx="6" fill="#593816"/>
+<text x="442.0" y="179.0" font-size="13" text-anchor="middle" fill="#f0f0f0">12</text>
+<text x="16" y="216" font-size="13" font-weight="600" fill="#e8e8ea">doré</text>
+<text x="16" y="232" font-size="11" fill="#9a9ca3">gold</text>
+<rect x="124" y="200" width="84" height="36" rx="6" fill="#ffc030"/>
+<text x="166.0" y="223.0" font-size="13" text-anchor="middle" fill="#111">19</text>
+<rect x="216" y="200" width="84" height="36" rx="6" fill="#cc9926"/>
+<text x="258.0" y="223.0" font-size="13" text-anchor="middle" fill="#111">18</text>
+<rect x="308" y="200" width="84" height="36" rx="6" fill="#8c691a"/>
+<text x="350.0" y="223.0" font-size="13" text-anchor="middle" fill="#f0f0f0">17</text>
+<rect x="400" y="200" width="84" height="36" rx="6" fill="#594310"/>
+<text x="442.0" y="223.0" font-size="13" text-anchor="middle" fill="#f0f0f0">16</text>
+<text x="16" y="260" font-size="13" font-weight="600" fill="#e8e8ea">jaune</text>
+<text x="16" y="276" font-size="11" fill="#9a9ca3">yellow</text>
+<rect x="124" y="244" width="84" height="36" rx="6" fill="#ffee22"/>
+<text x="166.0" y="267.0" font-size="13" text-anchor="middle" fill="#111">23</text>
+<rect x="216" y="244" width="84" height="36" rx="6" fill="#ccbe1b"/>
+<text x="258.0" y="267.0" font-size="13" text-anchor="middle" fill="#111">22</text>
+<rect x="308" y="244" width="84" height="36" rx="6" fill="#8c8212"/>
+<text x="350.0" y="267.0" font-size="13" text-anchor="middle" fill="#f0f0f0">21</text>
+<rect x="400" y="244" width="84" height="36" rx="6" fill="#59530b"/>
+<text x="442.0" y="267.0" font-size="13" text-anchor="middle" fill="#f0f0f0">20</text>
+<text x="16" y="304" font-size="13" font-weight="600" fill="#e8e8ea">lime</text>
+<text x="16" y="320" font-size="11" fill="#9a9ca3">lime</text>
+<rect x="124" y="288" width="84" height="36" rx="6" fill="#a8f020"/>
+<text x="166.0" y="311.0" font-size="13" text-anchor="middle" fill="#111">27</text>
+<rect x="216" y="288" width="84" height="36" rx="6" fill="#86c019"/>
+<text x="258.0" y="311.0" font-size="13" text-anchor="middle" fill="#111">26</text>
+<rect x="308" y="288" width="84" height="36" rx="6" fill="#5c8411"/>
+<text x="350.0" y="311.0" font-size="13" text-anchor="middle" fill="#f0f0f0">25</text>
+<rect x="400" y="288" width="84" height="36" rx="6" fill="#3a540b"/>
+<text x="442.0" y="311.0" font-size="13" text-anchor="middle" fill="#f0f0f0">24</text>
+<text x="16" y="348" font-size="13" font-weight="600" fill="#e8e8ea">vert</text>
+<text x="16" y="364" font-size="11" fill="#9a9ca3">green</text>
+<rect x="124" y="332" width="84" height="36" rx="6" fill="#30e040"/>
+<text x="166.0" y="355.0" font-size="13" text-anchor="middle" fill="#111">31</text>
+<rect x="216" y="332" width="84" height="36" rx="6" fill="#26b333"/>
+<text x="258.0" y="355.0" font-size="13" text-anchor="middle" fill="#f0f0f0">30</text>
+<rect x="308" y="332" width="84" height="36" rx="6" fill="#1a7b23"/>
+<text x="350.0" y="355.0" font-size="13" text-anchor="middle" fill="#f0f0f0">29</text>
+<rect x="400" y="332" width="84" height="36" rx="6" fill="#104e16"/>
+<text x="442.0" y="355.0" font-size="13" text-anchor="middle" fill="#f0f0f0">28</text>
+<text x="16" y="392" font-size="13" font-weight="600" fill="#e8e8ea">menthe</text>
+<text x="16" y="408" font-size="11" fill="#9a9ca3">mint</text>
+<rect x="124" y="376" width="84" height="36" rx="6" fill="#30f0a0"/>
+<text x="166.0" y="399.0" font-size="13" text-anchor="middle" fill="#111">35</text>
+<rect x="216" y="376" width="84" height="36" rx="6" fill="#26c080"/>
+<text x="258.0" y="399.0" font-size="13" text-anchor="middle" fill="#f0f0f0">34</text>
+<rect x="308" y="376" width="84" height="36" rx="6" fill="#1a8458"/>
+<text x="350.0" y="399.0" font-size="13" text-anchor="middle" fill="#f0f0f0">33</text>
+<rect x="400" y="376" width="84" height="36" rx="6" fill="#105438"/>
+<text x="442.0" y="399.0" font-size="13" text-anchor="middle" fill="#f0f0f0">32</text>
+<text x="16" y="436" font-size="13" font-weight="600" fill="#e8e8ea">cyan</text>
+<text x="16" y="452" font-size="11" fill="#9a9ca3">cyan</text>
+<rect x="124" y="420" width="84" height="36" rx="6" fill="#20e8e8"/>
+<text x="166.0" y="443.0" font-size="13" text-anchor="middle" fill="#111">39</text>
+<rect x="216" y="420" width="84" height="36" rx="6" fill="#19b9b9"/>
+<text x="258.0" y="443.0" font-size="13" text-anchor="middle" fill="#f0f0f0">38</text>
+<rect x="308" y="420" width="84" height="36" rx="6" fill="#117f7f"/>
+<text x="350.0" y="443.0" font-size="13" text-anchor="middle" fill="#f0f0f0">37</text>
+<rect x="400" y="420" width="84" height="36" rx="6" fill="#0b5151"/>
+<text x="442.0" y="443.0" font-size="13" text-anchor="middle" fill="#f0f0f0">36</text>
+<text x="16" y="480" font-size="13" font-weight="600" fill="#e8e8ea">turquoise</text>
+<text x="16" y="496" font-size="11" fill="#9a9ca3">turquoise</text>
+<rect x="124" y="464" width="84" height="36" rx="6" fill="#20c0f0"/>
+<text x="166.0" y="487.0" font-size="13" text-anchor="middle" fill="#111">43</text>
+<rect x="216" y="464" width="84" height="36" rx="6" fill="#1999c0"/>
+<text x="258.0" y="487.0" font-size="13" text-anchor="middle" fill="#f0f0f0">42</text>
+<rect x="308" y="464" width="84" height="36" rx="6" fill="#116984"/>
+<text x="350.0" y="487.0" font-size="13" text-anchor="middle" fill="#f0f0f0">41</text>
+<rect x="400" y="464" width="84" height="36" rx="6" fill="#0b4354"/>
+<text x="442.0" y="487.0" font-size="13" text-anchor="middle" fill="#f0f0f0">40</text>
+<text x="16" y="524" font-size="13" font-weight="600" fill="#e8e8ea">bleu</text>
+<text x="16" y="540" font-size="11" fill="#9a9ca3">blue</text>
+<rect x="124" y="508" width="84" height="36" rx="6" fill="#2a60ff"/>
+<text x="166.0" y="531.0" font-size="13" text-anchor="middle" fill="#f0f0f0">47</text>
+<rect x="216" y="508" width="84" height="36" rx="6" fill="#214ccc"/>
+<text x="258.0" y="531.0" font-size="13" text-anchor="middle" fill="#f0f0f0">46</text>
+<rect x="308" y="508" width="84" height="36" rx="6" fill="#17348c"/>
+<text x="350.0" y="531.0" font-size="13" text-anchor="middle" fill="#f0f0f0">45</text>
+<rect x="400" y="508" width="84" height="36" rx="6" fill="#0e2159"/>
+<text x="442.0" y="531.0" font-size="13" text-anchor="middle" fill="#f0f0f0">44</text>
+<text x="16" y="568" font-size="13" font-weight="600" fill="#e8e8ea">prune</text>
+<text x="16" y="584" font-size="11" fill="#9a9ca3">plum</text>
+<rect x="124" y="552" width="84" height="36" rx="6" fill="#8050ff"/>
+<text x="166.0" y="575.0" font-size="13" text-anchor="middle" fill="#f0f0f0">51</text>
+<rect x="216" y="552" width="84" height="36" rx="6" fill="#6640cc"/>
+<text x="258.0" y="575.0" font-size="13" text-anchor="middle" fill="#f0f0f0">50</text>
+<rect x="308" y="552" width="84" height="36" rx="6" fill="#462c8c"/>
+<text x="350.0" y="575.0" font-size="13" text-anchor="middle" fill="#f0f0f0">49</text>
+<rect x="400" y="552" width="84" height="36" rx="6" fill="#2c1c59"/>
+<text x="442.0" y="575.0" font-size="13" text-anchor="middle" fill="#f0f0f0">48</text>
+<text x="16" y="612" font-size="13" font-weight="600" fill="#e8e8ea">violet</text>
+<text x="16" y="628" font-size="11" fill="#9a9ca3">violet</text>
+<rect x="124" y="596" width="84" height="36" rx="6" fill="#a040ff"/>
+<text x="166.0" y="619.0" font-size="13" text-anchor="middle" fill="#f0f0f0">55</text>
+<rect x="216" y="596" width="84" height="36" rx="6" fill="#8033cc"/>
+<text x="258.0" y="619.0" font-size="13" text-anchor="middle" fill="#f0f0f0">54</text>
+<rect x="308" y="596" width="84" height="36" rx="6" fill="#58238c"/>
+<text x="350.0" y="619.0" font-size="13" text-anchor="middle" fill="#f0f0f0">53</text>
+<rect x="400" y="596" width="84" height="36" rx="6" fill="#381659"/>
+<text x="442.0" y="619.0" font-size="13" text-anchor="middle" fill="#f0f0f0">52</text>
+<text x="16" y="656" font-size="13" font-weight="600" fill="#e8e8ea">pourpre</text>
+<text x="16" y="672" font-size="11" fill="#9a9ca3">purple</text>
+<rect x="124" y="640" width="84" height="36" rx="6" fill="#d030ff"/>
+<text x="166.0" y="663.0" font-size="13" text-anchor="middle" fill="#f0f0f0">59</text>
+<rect x="216" y="640" width="84" height="36" rx="6" fill="#a626cc"/>
+<text x="258.0" y="663.0" font-size="13" text-anchor="middle" fill="#f0f0f0">58</text>
+<rect x="308" y="640" width="84" height="36" rx="6" fill="#721a8c"/>
+<text x="350.0" y="663.0" font-size="13" text-anchor="middle" fill="#f0f0f0">57</text>
+<rect x="400" y="640" width="84" height="36" rx="6" fill="#481059"/>
+<text x="442.0" y="663.0" font-size="13" text-anchor="middle" fill="#f0f0f0">56</text>
+<text x="16" y="700" font-size="13" font-weight="600" fill="#e8e8ea">magenta</text>
+<text x="16" y="716" font-size="11" fill="#9a9ca3">magenta</text>
+<rect x="124" y="684" width="84" height="36" rx="6" fill="#ff30d0"/>
+<text x="166.0" y="707.0" font-size="13" text-anchor="middle" fill="#f0f0f0">63</text>
+<rect x="216" y="684" width="84" height="36" rx="6" fill="#cc26a6"/>
+<text x="258.0" y="707.0" font-size="13" text-anchor="middle" fill="#f0f0f0">62</text>
+<rect x="308" y="684" width="84" height="36" rx="6" fill="#8c1a72"/>
+<text x="350.0" y="707.0" font-size="13" text-anchor="middle" fill="#f0f0f0">61</text>
+<rect x="400" y="684" width="84" height="36" rx="6" fill="#591048"/>
+<text x="442.0" y="707.0" font-size="13" text-anchor="middle" fill="#f0f0f0">60</text>
+<text x="16" y="744" font-size="13" font-weight="600" fill="#e8e8ea">fuchsia</text>
+<text x="16" y="760" font-size="11" fill="#9a9ca3">fuchsia</text>
+<rect x="124" y="728" width="84" height="36" rx="6" fill="#ff4090"/>
+<text x="166.0" y="751.0" font-size="13" text-anchor="middle" fill="#f0f0f0">67</text>
+<rect x="216" y="728" width="84" height="36" rx="6" fill="#cc3373"/>
+<text x="258.0" y="751.0" font-size="13" text-anchor="middle" fill="#f0f0f0">66</text>
+<rect x="308" y="728" width="84" height="36" rx="6" fill="#8c234f"/>
+<text x="350.0" y="751.0" font-size="13" text-anchor="middle" fill="#f0f0f0">65</text>
+<rect x="400" y="728" width="84" height="36" rx="6" fill="#591632"/>
+<text x="442.0" y="751.0" font-size="13" text-anchor="middle" fill="#f0f0f0">64</text>
+<text x="16" y="788" font-size="13" font-weight="600" fill="#e8e8ea">blanc</text>
+<text x="16" y="804" font-size="11" fill="#9a9ca3">white</text>
+<rect x="124" y="772" width="84" height="36" rx="6" fill="#ffffff"/>
+<text x="166.0" y="795.0" font-size="13" text-anchor="middle" fill="#111">71</text>
+<rect x="216" y="772" width="84" height="36" rx="6" fill="#cccccc"/>
+<text x="258.0" y="795.0" font-size="13" text-anchor="middle" fill="#111">70</text>
+<rect x="308" y="772" width="84" height="36" rx="6" fill="#8c8c8c"/>
+<text x="350.0" y="795.0" font-size="13" text-anchor="middle" fill="#f0f0f0">69</text>
+<rect x="400" y="772" width="84" height="36" rx="6" fill="#595959"/>
+<text x="442.0" y="795.0" font-size="13" text-anchor="middle" fill="#f0f0f0">68</text>
+</svg>
