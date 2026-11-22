@@ -24,7 +24,7 @@ L'extension suffit pour afficher les splits. Le plugin est optionnel.
 
 ### Télécharger
 Prends les deux fichiers dans la dernière version de la page
-[Releases](../../releases) du dépôt : `KontrolLights.dll` et `KontrolLightsMap-vst3.zip`.
+[Releases](https://github.com/ljadov/s88mk2-gp-lights/releases/latest) du dépôt : `KontrolLights.dll` et `KontrolLightsMap-vst3.zip`.
 
 ### Installer l'extension
 1. Ferme Gig Performer.
