@@ -6,6 +6,7 @@
 //   light guide: [0x81, c0, c1, ... cN-1]   un octet de palette par touche
 #include <array>
 #include <atomic>
+#include <chrono>
 #include <condition_variable>
 #include <cstdint>
 #include <mutex>
@@ -76,6 +77,7 @@ class KontrolDevice
     const void *fLiveView = nullptr;
     void pollLiveMap(); // lit le canal direct du plugin (Windows)
     bool fPaused = false;
+    std::chrono::steady_clock::time_point fLastInit{};
     int fWriteErrors = 0;
     std::string fLastError;
     std::string fProbeReport = "(pas encore de recherche)";

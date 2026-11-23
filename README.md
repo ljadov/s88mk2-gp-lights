@@ -175,6 +175,17 @@ Menu **Extensions > Kontrol Lights : diagnostic des blocs MIDI In**, puis ouvre 
 | Les lumières s'effacent dans certains rackspaces | Plugin Komplete Kontrol présent : voir la section 5 |
 | Les couleurs du plugin ne reviennent pas au changement de rackspace | Le bloc Kontrol Lights Map a-t-il un handle ? |
 
+### Clavier en « mode MIDI » (touches toutes bleues) sans plugin Komplete Kontrol
+
+Quand aucun plugin Komplete Kontrol n'est chargé, le service Native Instruments remet
+le clavier en mode MIDI : toutes les touches redeviennent bleues. L'extension renvoie
+chaque seconde le message qui repasse le clavier en mode light guide, ce qui devrait
+suffire. Si les touches restent bleues malgré tout, le dernier recours est d'arrêter les
+services Native Instruments (Windows : `services.msc`, chercher « NI Hardware Service »,
+« NI Host Integration Agent » et « NTK Daemon » ; noms à vérifier sur ta machine).
+Contrepartie : le plugin Komplete Kontrol ne pilote plus le clavier (boutons, écrans,
+navigation) tant que ces services sont arrêtés. Les notes MIDI fonctionnent toujours.
+
 Test sans Gig Performer : installe Python, puis `pip install hidapi` et
 `python tools/test_lightguide.py`. Le script liste les interfaces USB du clavier et
 fait un balayage arc-en-ciel.

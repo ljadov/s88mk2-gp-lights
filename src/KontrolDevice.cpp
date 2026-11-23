@@ -32,6 +32,7 @@ constexpr Model kModels[] = {
 constexpr auto kFrameInterval = std::chrono::milliseconds(33);
 constexpr auto kRetryInterval = std::chrono::milliseconds(500);
 constexpr auto kReassertInterval = std::chrono::milliseconds(250);
+constexpr auto kInitInterval = std::chrono::milliseconds(1000);
 } // namespace
 
 KontrolDevice::KontrolDevice()
@@ -274,6 +275,17 @@ void KontrolDevice::run()
                 frame[1 + i] = c;
             }
             fDirty = false;
+        }
+
+        // Quand aucun hote Komplete Kontrol n'est actif, le service NI remet le clavier en
+        // "mode MIDI" (touches bleues) et notre image est ignoree. On renvoie donc regulierement
+        // le message d'entree en mode light guide (A0 00 00) juste avant l'image.
+        const auto now = std::chrono::steady_clock::now();
+        if (now - fLastInit >= kInitInterval)
+        {
+            const unsigned char init[] = {0xA0, 0x00, 0x00};
+            hid_write(fDev, init, sizeof(init));
+            fLastInit = now;
         }
 
         if (hid_write(fDev, frame.data(), frame.size()) < 0)
