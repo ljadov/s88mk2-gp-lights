@@ -318,7 +318,7 @@ std::vector<Zone> LibMain::scanZones(bool logDetails)
     return out;
 }
 
-bool LibMain::readNoteMap(std::array<uint8_t, 128> &colors, bool &replace, bool logDetails)
+bool LibMain::readNoteMap(std::array<uint8_t, 128> &colors, bool &replace, bool &yield, bool logDetails)
 {
     std::vector<std::string> handles;
     getPluginList(handles, false);
@@ -337,9 +337,11 @@ bool LibMain::readNoteMap(std::array<uint8_t, 128> &colors, bool &replace, bool 
                 ++painted;
         }
         replace = getPluginParameter(h, 128, false) > 0.5;
+        yield = getPluginParameter(h, 129, false) > 0.5;
         if (logDetails)
             consoleLog("Kontrol Lights : carte de notes [" + h + "] : " + std::to_string(painted) + " note(s) reglee(s)" +
-                       (replace ? ", remplace les zones" : ", par-dessus les zones"));
+                       (replace ? ", remplace les zones" : ", par-dessus les zones") +
+                       (yield ? ", lumieres laissees a Komplete Kontrol" : ""));
         return true;
     }
     if (logDetails)
@@ -353,9 +355,11 @@ void LibMain::refreshZones()
     device.setAllNotes(image);
     device.publishZones(image);
     std::array<uint8_t, 128> map{};
-    bool replace = false;
-    const bool found = readNoteMap(map, replace, false);
+    bool replace = false, yield = false;
+    const bool found = readNoteMap(map, replace, yield, false);
     device.setOverlay(map, replace, found);
+    if (found && yield)
+        device.setPaused(true); // case "Laisser les lumieres a Komplete Kontrol" du plugin
     device.markLiveSeen();
 }
 
@@ -413,9 +417,11 @@ void LibMain::InvokeMenu(int index)
         device.setAllNotes(image);
         device.publishZones(image);
         std::array<uint8_t, 128> map{};
-        bool replace = false;
-        const bool found = readNoteMap(map, replace, true);
+        bool replace = false, yield = false;
+        const bool found = readNoteMap(map, replace, yield, true);
         device.setOverlay(map, replace, found);
+        if (found && yield)
+            device.setPaused(true);
         device.markLiveSeen();
     }
 }

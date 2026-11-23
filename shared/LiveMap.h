@@ -19,6 +19,7 @@ struct Block
     volatile uint32_t seq; // impair = ecriture en cours
     uint8_t replaceZones;  // 1 = la carte remplace les zones (transparent = eteint)
     uint8_t colors[128];
+    uint8_t yieldToKK; // 1 = laisser le light guide a Komplete Kontrol dans ce rackspace
 };
 
 // Sens inverse : l'extension publie l'image des zones MIDI In du rackspace actif,

@@ -37,6 +37,6 @@ class MapEditor : public juce::AudioProcessorEditor, private juce::Timer
     std::set<int> selection;
     int anchor = -1;
     juce::String hoverText; // nom de la couleur ou de la touche sous la souris
-    juce::ToggleButton replaceToggle;
+    juce::ToggleButton replaceToggle, yieldToggle;
     juce::TextButton transparentButton, offButton, clearButton, allButton;
 };

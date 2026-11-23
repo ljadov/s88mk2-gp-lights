@@ -39,6 +39,8 @@ class MapProcessor : public juce::AudioProcessor
     void setNoteColor(int note, int color); // geste d'edition complet, notifie l'hote
     bool getReplace() const;
     void setReplace(bool);
+    bool getYield() const;
+    void setYield(bool);
     void publishLive(); // envoie la carte a l'extension (edition en direct)
 
     juce::AudioProcessorValueTreeState state;

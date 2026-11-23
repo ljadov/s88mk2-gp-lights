@@ -376,12 +376,14 @@ void KontrolDevice::pollLiveMap()
     std::array<uint8_t, 128> colors;
     std::copy(b->colors, b->colors + 128, colors.begin());
     const bool replace = b->replaceZones != 0;
+    const bool yield = b->yieldToKK != 0;
     if (b->seq != seq)
         return; // ecriture pendant la copie : on relira au prochain tour
     fLiveSeen = seq;
     fOverlay = colors;
     fOverlayReplace = replace;
     fOverlayActive = true;
+    fPaused = yield; // case "Laisser les lumieres a Komplete Kontrol" cochee/decochee en direct
     fDirty = true;
 #endif
 }

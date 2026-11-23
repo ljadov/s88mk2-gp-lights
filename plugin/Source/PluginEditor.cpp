@@ -59,6 +59,13 @@ MapEditor::MapEditor(MapProcessor &p) : AudioProcessorEditor(p), proc(p)
         proc.setReplace(replaceToggle.getToggleState());
         proc.publishLive();
     };
+    yieldToggle.setButtonText(u8("Laisser les lumières à Komplete Kontrol"));
+    yieldToggle.setTooltip(u8("Dans ce rackspace, l'extension ne touche plus au light guide"));
+    yieldToggle.setToggleState(proc.getYield(), juce::dontSendNotification);
+    yieldToggle.onClick = [this] {
+        proc.setYield(yieldToggle.getToggleState());
+        proc.publishLive();
+    };
     transparentButton.setButtonText("Transparent");
     transparentButton.setTooltip(u8("La zone du bloc MIDI In reste visible sur ces touches"));
     transparentButton.onClick = [this] { applyColor(livemap::kTransparent); };
@@ -73,7 +80,7 @@ MapEditor::MapEditor(MapProcessor &p) : AudioProcessorEditor(p), proc(p)
     };
     allButton.setButtonText(u8("Tout sélectionner"));
     allButton.onClick = [this] { selectRange(MapProcessor::kFirstKey, MapProcessor::kLastKey); repaint(); };
-    for (auto *c : std::initializer_list<juce::Component *>{&replaceToggle, &transparentButton, &offButton, &clearButton, &allButton})
+    for (auto *c : std::initializer_list<juce::Component *>{&replaceToggle, &yieldToggle, &transparentButton, &offButton, &clearButton, &allButton})
         addAndMakeVisible(c);
     setSize(kW, kH);
     startTimerHz(10);
@@ -123,6 +130,8 @@ void MapEditor::readZones()
 void MapEditor::timerCallback()
 {
     readZones();
+    replaceToggle.setToggleState(proc.getReplace(), juce::dontSendNotification);
+    yieldToggle.setToggleState(proc.getYield(), juce::dontSendNotification);
     repaint();
 }
 
@@ -328,5 +337,6 @@ void MapEditor::resized()
     offButton.setBounds(x + 160, 262, 150, 28);
     allButton.setBounds(x, 298, 150, 28);
     clearButton.setBounds(x + 160, 298, 150, 28);
-    replaceToggle.setBounds(x, 334, 320, 24);
+    replaceToggle.setBounds(x, 330, 330, 22);
+    yieldToggle.setBounds(x, 352, 330, 22);
 }

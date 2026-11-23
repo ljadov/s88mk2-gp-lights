@@ -87,6 +87,8 @@ Boutons :
   cette couleur avec des hachures.
 - **Éteint** : la touche reste éteinte, même si une zone la couvre.
 - **Remplacer les zones MIDI In** : seules les couleurs du plugin sont affichées.
+- **Laisser les lumières à Komplete Kontrol** : dans ce rackspace, l'extension ne touche
+  plus au light guide (même effet que `KK_SetYield(true)`, sans script). Enregistré avec le rackspace.
 - **Tout sélectionner** et **Tout effacer**.
 
 Les couleurs sont enregistrées avec le rackspace, comme les réglages de n'importe
@@ -155,6 +157,9 @@ End
 
 L'extension ne touche alors plus aux lumières dans ce rackspace et reprend au
 rackspace suivant.
+
+Sans écrire de script : insère Kontrol Lights Map dans ce rackspace (avec un handle)
+et coche **Laisser les lumières à Komplete Kontrol**.
 
 ---
 

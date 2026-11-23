@@ -25,7 +25,7 @@ class LibMain : public gigperformer::sdk::GigPerformerAPI
     void refreshZones();
     std::vector<Zone> scanZones(bool logDetails);
     // Lit le plugin "Kontrol Lights Map" du rackspace (par son handle). false s'il n'y en a pas.
-    bool readNoteMap(std::array<uint8_t, 128> &colors, bool &replace, bool logDetails);
+    bool readNoteMap(std::array<uint8_t, 128> &colors, bool &replace, bool &yield, bool logDetails);
 
     int GetMenuCount() override;
     std::string GetMenuName(int index) override;

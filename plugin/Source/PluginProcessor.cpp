@@ -22,6 +22,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout MapProcessor::makeLayout()
             juce::ParameterID{paramId(n), 1}, "Note " + juce::String(n) + " " + juce::MidiMessage::getMidiNoteName(n, true, true, 3),
             0, livemap::kMaxColor, 0));
     layout.add(std::make_unique<juce::AudioParameterBool>(juce::ParameterID{"replace", 1}, "Replace zones", false));
+    // Index 129 : laisser le light guide au plugin Komplete Kontrol dans ce rackspace
+    layout.add(std::make_unique<juce::AudioParameterBool>(juce::ParameterID{"yield", 1}, "Yield to Komplete Kontrol", false));
     return layout;
 }
 
@@ -81,6 +83,19 @@ void MapProcessor::setReplace(bool r)
     p->endChangeGesture();
 }
 
+bool MapProcessor::getYield() const
+{
+    return state.getRawParameterValue("yield")->load() > 0.5f;
+}
+
+void MapProcessor::setYield(bool y)
+{
+    auto *p = state.getParameter("yield");
+    p->beginChangeGesture();
+    p->setValueNotifyingHost(y ? 1.0f : 0.0f);
+    p->endChangeGesture();
+}
+
 void MapProcessor::publishLive()
 {
     if (!fBlock)
@@ -90,6 +105,7 @@ void MapProcessor::publishLive()
     std::atomic_thread_fence(std::memory_order_seq_cst);
     fBlock->magic = livemap::kMagic;
     fBlock->replaceZones = getReplace() ? 1 : 0;
+    fBlock->yieldToKK = getYield() ? 1 : 0;
     for (int n = 0; n < 128; ++n)
         fBlock->colors[n] = static_cast<uint8_t>(getNoteColor(n));
     std::atomic_thread_fence(std::memory_order_seq_cst);
