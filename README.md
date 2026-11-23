@@ -179,8 +179,8 @@ Menu **Extensions > Kontrol Lights : diagnostic des blocs MIDI In**, puis ouvre 
 
 Quand aucun plugin Komplete Kontrol n'est chargé, le service Native Instruments remet
 le clavier en mode MIDI : toutes les touches redeviennent bleues. L'extension renvoie
-chaque seconde le message qui repasse le clavier en mode light guide, ce qui devrait
-suffire. Si les touches restent bleues malgré tout, le dernier recours est d'arrêter les
+chaque seconde le message qui repasse le clavier en mode light guide, ce qui suffit
+(vérifié sur un S88 MK2 sous Windows). Si les touches restent bleues malgré tout, le dernier recours est d'arrêter les
 services Native Instruments (Windows : `services.msc`, chercher « NI Hardware Service »,
 « NI Host Integration Agent » et « NTK Daemon » ; noms à vérifier sur ta machine).
 Contrepartie : le plugin Komplete Kontrol ne pilote plus le clavier (boutons, écrans,
